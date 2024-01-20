@@ -44,6 +44,12 @@
                         <p><strong>{{ $message->user->name }}:</strong> {{ $message->message }}</p>
                     @endforeach
                 </div>
+                @error('message')
+                    <div class="bg-gradient-to-tr from-red-500 to-red-400 text-center text-xs font-bold text-white p-2">
+                        {{$message}}
+                    </div>
+                    
+                @enderror
                 <form action="{{route('message.store', $chat)}}" method="POST">
                     @csrf
                     <textarea name="message" placeholder="Enter a message" class="w-full h-20 resize-none border-2 border-gray-300 p-2 rounded-md focus:outline-none focus:ring-0"></textarea>

@@ -10,6 +10,9 @@ class MessageController extends Controller
 {
     public function store(Request $request, Chat $chat)
 {
+    $request->validate([
+        'message' => 'required'
+    ]);
     // Crear un nuevo mensaje
     $message = new Message();
     $message->user_id = auth()->user()->id;
